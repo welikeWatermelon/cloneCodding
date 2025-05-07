@@ -70,12 +70,24 @@ public class Order {                                      // (10)
     // DB 테이블의 컬럼에 저장할 때,
     // 그 값을 문자열(String) 형태로 저장하겠다." 라는 뜻입니다.
 
+
+
+
     // 연관관계 편의 메서드 (Member <-> Order)                 // (25)
     // 연관관계 편의 메서드들로서 객체 양방향 설정 쉽게 도와줌
     public void setMember(Member member) {
         this.member = member;
         member.getOrders().add(this);
     }
+    // Order 입장에서는 Member member → 주문한 사람 (ManyToOne)
+    //Member 입장에서는 List<Order> orders → 내가 한 모든 주문 (OneToMany)
+
+    // setMember()는 Java 객체 간의 관계를 동기화시키는 편의 메서드
+    // 자바 객체(member, order)의 양방향 관계를 양쪽에 직접 넣어주는 코드
+
+
+
+
 
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);

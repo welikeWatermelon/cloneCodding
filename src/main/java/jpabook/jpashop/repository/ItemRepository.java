@@ -13,6 +13,9 @@ public class ItemRepository {
     private final EntityManager em;
 
     public void save(Item item) {
+
+        // @GeneratedValue는 JPA가 DB에 INSERT(저장) 할 때 ID를 생성해주는 것이며,
+        // new Item() 했을 때는 ID가 null입니다!
         if (item.getId() == null) {
             em.persist(item); // persist 이유 : 새로운 엔티티를 영속성 컨텍스트에 등록
             // 하지만 바로 저장하는게 아니라, 1차 캐시에 저장 후 마지막에 모두 올리는 것임

@@ -20,7 +20,7 @@ public class ItemService {
 
     @Transactional
     // 이거 쓰는 이유
-    // 위에 기본값으로 readOnly = true 니까 쓰기를 하기 위함
+    // 위에 기본값으로 readOnly = true 니까 "쓰기"를 하기 위함
     public void saveItem(Item item) {
         itemRepository.save(item);
     }
@@ -31,5 +31,17 @@ public class ItemService {
 
     public Item findOne(Long itemId) {
         return itemRepository.findOne(itemId);
+    }
+
+    /**
+     * 영속성 컨텍스트가 자동 변경
+     */
+    @Transactional
+    public void updateItem(Long id, String name, int price, int stockQuantity) {
+
+        Item item = itemRepository.findOne(id);
+        item.setName(name);
+        item.setPrice(price);
+        item.setStockQuantity(stockQuantity);
     }
 }
