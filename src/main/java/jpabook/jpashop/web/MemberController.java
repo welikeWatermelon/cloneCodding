@@ -29,6 +29,8 @@ public class MemberController {
     @PostMapping(value = "/members/new")
     public String create(@Valid MemberForm form, BindingResult result) {
 
+        // 결과에 에러가 있어도 계속 진행됨
+        // 아래에서 에러 처리
         if (result.hasErrors()) {
             return "members/createMemberForm";
         }

@@ -22,6 +22,10 @@ public class ItemRepository {
             // persist()는 저장 예약이고, commit 시점에 실제 저장됨
         } else {
             em.merge(item); // merge는 제공되는 기본코드임?
+            // 변경 감지와 병합에 대한 내용이 필요
+            // 병합보단 변경감지를 해야함
+            // 만약 값을 빼놓고 null이 입력된다면 모두 null로 바꿔버림
+            // 그래서 하나하나 관리할 수 있는 변경감지를 해야함
         }
     }
 
