@@ -40,7 +40,7 @@ public class MemberController {
 
         memberService.join(member);
 
-        return "redirectL:/";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/members")

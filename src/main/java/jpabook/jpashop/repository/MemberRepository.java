@@ -23,12 +23,12 @@ public class MemberRepository {
     }
 
     public List<Member> findAll(){
-        return em.createQuery("slelect m from member m", Member.class)
+        return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
     }
 
     public List<Member> findByName(String name) {
-        return em.createQuery("select m from member m where m.name = :name", Member.class)
+        return em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name", name) //"변수 자리"에 실제 값을 넣는 작업 (:name 이 변수자리)
                 .getResultList(); // setParameter("name", A) 이라면 :name에 A가 옴
     }
